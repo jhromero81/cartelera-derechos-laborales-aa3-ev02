@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      @page {
+        size: 1180px 1510px;
+        margin: 0;
+      }
+      body {
+        background: #f4f7f5;
+      }
+      .wrap {
+        width: 1180px;
+        margin: 0 auto;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #1d2b26;
+      }
+      svg {
+        display: none;
+      }
+
+      /* ---- header ---- */
+      .head {
+        position: relative;
+        padding: 40px 52px 30px;
+        background: linear-gradient(135deg, #0d4d38, #0e6b4c);
+        overflow: hidden;
+      }
+      .head .blob {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .head .b1 {
+        width: 340px;
+        height: 340px;
+        right: -90px;
+        top: -120px;
+      }
+      .head .b2 {
+        width: 220px;
+        height: 220px;
+        right: 180px;
+        top: -80px;
+      }
+      .head .k {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 600;
+        font-size: 13px;
+        color: #8fe3b0;
+      }
+      .head h1 {
+        font-weight: 800;
+        font-size: 34px;
+        line-height: 1.12;
+        letter-spacing: 0.3px;
+        color: #fff;
+        margin-top: 6px;
+        max-width: 820px;
+      }
+      .head .sub {
+        color: #cfe8da;
+        font-size: 15px;
+        margin-top: 10px;
+        max-width: 760px;
+        line-height: 1.4;
+      }
+      .head .ev {
+        position: absolute;
+        right: 52px;
+        top: 44px;
+        text-align: right;
+        color: #b9e3cb;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .head .ev img {
+        width: 74px;
+        margin-bottom: 8px;
+      }
+
+      /* ---- caso ---- */
+      .caso {
+        display: flex;
+        gap: 20px;
+        padding: 24px 52px;
+        background: #fff;
+        border-bottom: 1px solid #e2ece6;
+      }
+      .caso .tag {
+        flex: 0 0 auto;
+      }
+      .caso .tag .lab {
+        font-weight: 700;
+        color: #fff;
+        background: #0e6b4c;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      .caso p {
+        color: #41564c;
+        font-size: 14.5px;
+        line-height: 1.5;
+      }
+      .caso b {
+        color: #0d4d38;
+      }
+
+      /* ---- titulo seccion + diagrama ---- */
+      .sect {
+        padding: 30px 52px 6px;
+      }
+      .sect .title {
+        font-weight: 800;
+        font-size: 24px;
+        color: #0d4d38;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .sect .title .n {
+        background: #0d4d38;
+        color: #fff;
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+      }
+      .sect .title svg {
+        width: 24px;
+        height: 24px;
+        stroke: #0e6b4c;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ---- fila metacogida ---- */
+      .meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 52px;
+      }
+      .meta .total {
+        background: #0d4d38;
+        color: #fff;
+        border-radius: 12px;
+        padding: 14px 22px;
+        text-align: right;
+      }
+      .meta .total .l {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #8fe3b0;
+      }
+      .meta .total .v {
+        font-size: 30px;
+        font-weight: 800;
+      }
+      .meta .total small {
+        font-size: 11px;
+        color: #c9e6d6;
+        display: block;
+      }
+
+      /* ---- grid de violaciones ---- */
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 6px 52px 26px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px 16px 14px;
+        border-left: 6px solid var(--c);
+        box-shadow: 0 2px 8px rgba(13, 77, 56, 0.06);
+      }
+      .card .top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .card .ic {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card .ic svg {
+        width: 22px;
+        height: 22px;
+        stroke: #fff;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .card h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: #1d2b26;
+      }
+      .card .cant {
+        font-size: 19px;
+        font-weight: 800;
+        color: var(--c);
+        margin: 4px 0 6px;
+      }
+      .card .det {
+        font-size: 12px;
+        color: #5a6f65;
+        line-height: 1.4;
+      }
+      .card .nbadge {
+        margin-left: auto;
+        font-weight: 800;
+        color: var(--c);
+        font-size: 15px;
+      }
+
+      /* ---- conclusiones ---- */
+      .acc {
+        background: #e8f3ec;
+        border-radius: 14px;
+        margin: 0 52px 24px;
+        padding: 20px 24px;
+        border-left: 6px solid #0d4d38;
+      }
+      .acc h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 800;
+        color: #0d4d38;
+      }
+      .acc h3 svg {
+        width: 22px;
+        height: 22px;
+        stroke: #0e6b4c;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .acc p {
+        font-size: 14px;
+        color: #2f463b;
+        line-height: 1.55;
+        margin-top: 6px;
+      }
+      .acc ul {
+        margin: 8px 0 0 20px;
+      }
+      .acc li {
+        font-size: 13.5px;
+        color: #2f463b;
+        line-height: 1.5;
+      }
+
+      /* ---- footer ---- */
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 52px 26px;
+        border-top: 1.5px solid #cfe0d6;
+      }
+      .foot-sources {
+        font-size: 11.5px;
+        color: #5a6f65;
+        line-height: 1.7;
+        max-width: 620px;
+      }
+      .foot-sources strong {
+        color: #0d4d38;
+      }
+      .foot-source-item {
+        display: inline;
+      }
+      .foot-source-item + .foot-source-item::before {
+        content: " · ";
+        color: #9bb8ab;
+      }
+      .foot-source-item cite {
+        font-style: italic;
+      }
+      .foot-credits {
+        font-size: 11.5px;
+        color: #5a6f65;
+        line-height: 1.6;
+        text-align: right;
+        white-space: nowrap;
+      }
+      .foot-credits strong {
+        color: #0d4d38;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <svg>
+        <symbol id="i-warn" viewBox="0 0 24 24">
+          <path d="M12 3 2.5 20h19z" />
+          <line x1="12" y1="9" x2="12" y2="14" />
+          <circle cx="12" cy="17.2" r="0.4" />
+        </symbol>
+        <symbol id="i-money" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path
+            d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.5 1 2 3 2.5 3 1.1 3 2.5-1.3 2.5-3 2.5-3-1.1-3-2.5"
+          />
+        </symbol>
+        <symbol id="i-bus" viewBox="0 0 24 24">
+          <path
+            d="M5 19v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1M15 19v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1"
+          />
+          <path d="M4 7h16v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" />
+          <path d="M4 7V4h16v3M8 12h4v3H8zM14 12h2v3h-2z" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-coin" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v10M9 9.5h4a1.5 1.5 0 0 1 0 3h-2a1.5 1.5 0 0 0 0 3h4" />
+        </symbol>
+        <symbol id="i-sunday" viewBox="0 0 24 24">
+          <path d="M4 18V9l8-5 8 5v9" />
+          <path d="M9 12h1M12 12h1M15 12h1M9 15h1M12 15h1M15 15h1" />
+          <rect x="4" y="18" width="16" height="2" />
+        </symbol>
+        <symbol id="i-gift" viewBox="0 0 24 24">
+          <rect x="4" y="9" width="16" height="11" />
+          <path
+            d="M4 9h16v2H4zM12 9v11M12 9c0-3 2-5 4-5 2 0 2 2 0 3M12 9c0-3-2-5-4-5-2 0-2 2 0 3"
+          />
+        </symbol>
+        <symbol id="i-shirt" viewBox="0 0 24 24">
+          <path
+            d="M9 4 4 8l2 5 2-1v8h8v-8l2 1 2-5-5-4c0 1.5-1.1 2.5-3 2.5S9 5.5 9 4z"
+          />
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z" />
+          <path d="M9 12l2 2 4-4" />
+        </symbol>
+        <symbol id="i-stack" viewBox="0 0 24 24">
+          <path d="M12 3 3 8l9 5 9-5z" />
+          <path d="M3 12l9 5 9-5M3 16l9 5 9-5" />
+        </symbol>
+        <symbol id="i-law" viewBox="0 0 24 24">
+          <path d="M12 3v18M7 3h10M8 21h8" />
+          <path
+            d="M4 8h5M15 8h5M6 8v6a2 2 0 0 0 4 0V8M14 8v6a2 2 0 0 0 4 0V8"
+          />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M5 12h14M14 6l6 6-6 6" />
+        </symbol>
+      </svg>
+      <div class="head">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="ev">
+          <img
+            src="data:image/png;base64,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"
+          /><br />CARTELERA DIGITAL
+        </div>
+        <div class="k">
+          Evidencia GA11-210201501-AA3-EV02 · Foro estudio de caso
+        </div>
+        <h1>
+          Incumplimiento de derechos laborales: caso Agroindustria La Esperanza
+          S.A.S.
+        </h1>
+        <div class="sub">
+          Trabajo en grupo sobre el caso asignado: ¿cuáles derechos no se
+          cumplen y cuánto representan? Síntesis visual del caso de Juan Pérez
+          (auxiliar de bodega, 2025).
+        </div>
+      </div>
+      <div class="caso">
+        <div class="tag"><span class="lab">ESTUDIO DE CASO</span></div>
+        <p>
+          <b>Juan Pérez</b>, auxiliar de bodega, fue contratado en enero de 2025
+          con contrato verbal por 12 meses en Agroindustria La Esperanza S.A.S.
+          Recibió $1.200.000 mensuales (bajo el mínimo), trabajó de lunes a
+          sábado de 7 am a 7 pm y 3 domingos al mes. La empresa vulneró salario,
+          prestaciones, seguridad social y condiciones de trabajo durante todo
+          el año.
+        </p>
+      </div>
+      <div class="sect">
+        <div class="title">
+          <span class="n">1</span> Derechos incumplidos y sus cuantías
+          <svg><use href="#i-law" /></svg>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card" style="--c: #c0392b">
+          <div class="top">
+            <div class="ic" style="background: #c0392b">
+              <svg><use href="#i-money" /></svg>
+            </div>
+            <h3>Salario inferior al mínimo</h3>
+            <span class="nbadge">01</span>
+          </div>
+          <div class="cant">$2.682.000</div>
+          <div class="det">
+            Percibió $1.200.000, pero el SMLMV 2025 es $1.423.500. Diferencia de
+            $223.500 mensual durante los 12 meses.
+          </div>
+        </div>
+        <div class="card" style="--c: #e67e22">
+          <div class="top">
+            <div class="ic" style="background: #e67e22">
+              <svg><use href="#i-bus" /></svg>
+            </div>
+            <h3>Auxilio de transporte no pagado</h3>
+            <span class="nbadge">02</span>
+          </div>
+          <div class="cant">$2.400.000</div>
+          <div class="det">
+            $200.000 mensuales que nunca recibió, a pesar de tener derecho por
+            ganar menos de 2 SMLMV.
+          </div>
+        </div>
+        <div class="card" style="--c: #8e44ad">
+          <div class="top">
+            <div class="ic" style="background: #8e44ad">
+              <svg><use href="#i-clock" /></svg>
+            </div>
+            <h3>Horas extras no reconocidas</h3>
+            <span class="nbadge">03</span>
+          </div>
+          <div class="cant">$9.245.632</div>
+          <div class="det">
+            Jornada de 12 h (7 am a 7 pm) de lunes a sábado: 4 horas diarias sin
+            recargo ~$7.414/hora.
+          </div>
+        </div>
+        <div class="card" style="--c: #2980b9">
+          <div class="top">
+            <div class="ic" style="background: #2980b9">
+              <svg><use href="#i-sunday" /></svg>
+            </div>
+            <h3>Recargo dominical omitido</h3>
+            <span class="nbadge">04</span>
+          </div>
+          <div class="cant">$4.484.025</div>
+          <div class="det">
+            Trabajó 3 domingos al mes (12 h c/u) sin el recargo del 75 % sobre
+            la hora ordinaria (~$10.380/h).
+          </div>
+        </div>
+        <div class="card" style="--c: #27ae60">
+          <div class="top">
+            <div class="ic" style="background: #27ae60">
+              <svg><use href="#i-gift" /></svg>
+            </div>
+            <h3>Prima de servicios no pagada</h3>
+            <span class="nbadge">05</span>
+          </div>
+          <div class="cant">$1.200.000</div>
+          <div class="det">
+            Corresponde a un salario mensual por año (½ en cada semestre).
+          </div>
+        </div>
+        <div class="card" style="--c: #16a085">
+          <div class="top">
+            <div class="ic" style="background: #16a085">
+              <svg><use href="#i-coin" /></svg>
+            </div>
+            <h3>Cesantías e intereses no consignados</h3>
+            <span class="nbadge">06</span>
+          </div>
+          <div class="cant">$1.344.000</div>
+          <div class="det">
+            Cesantías de $1.200.000 más intereses del 12 %, que debieron
+            consignarse a un fondo.
+          </div>
+        </div>
+        <div class="card" style="--c: #c0392b">
+          <div class="top">
+            <div class="ic" style="background: #c0392b">
+              <svg><use href="#i-shirt" /></svg>
+            </div>
+            <h3>Dotación de trabajo no entregada</h3>
+            <span class="nbadge">07</span>
+          </div>
+          <div class="cant">en especie</div>
+          <div class="det">
+            Obligación de suministrar dotación periódica para el desarrollo del
+            cargo; no se entregó nunca.
+          </div>
+        </div>
+        <div class="card" style="--c: #7f8c8d">
+          <div class="top">
+            <div class="ic" style="background: #7f8c8d">
+              <svg><use href="#i-shield" /></svg>
+            </div>
+            <h3>Seguridad social sin afiliación</h3>
+            <span class="nbadge">08</span>
+          </div>
+          <div class="cant">$1.793.610</div>
+          <div class="det">
+            Primeros 6 meses sin cotización a salud, pensión y ARL; aportes del
+            empleador ≈ 21 % sobre el IBC mínimo ($1.423.500).
+          </div>
+        </div>
+      </div>
+      <div class="meta">
+        <div style="font-size: 13.5px; color: #41564c; max-width: 520px">
+          Ocho derechos fundamentales del trabajo no se cumplieron. Se estima
+          que el no reconocimiento asciende a cerca de
+          <b style="color: #0d4d38">$23,15 millones</b> en la vigencia 2025
+          (cálculo referencial sobre SMLMV 2025 = $1.423.500).
+        </div>
+        <div class="total">
+          <div class="l">Total estimado</div>
+          <div class="v">≈ $23.149.000</div>
+          <small>de derechos no reconocidos (2025)</small>
+        </div>
+      </div>
+      <div class="acc">
+        <h3>
+          <svg><use href="#i-stack" /></svg> Conclusiones
+        </h3>
+        <p>
+          Agroindustria La Esperanza S.A.S. deslaborizó y precarizó el empleo de
+          Juan Pérez: contratación verbal, salario por debajo del mínimo,
+          jornadas de 12 horas no remuneradas y ausencia total de prestaciones y
+          seguridad social por periodos. Estas conductas vulneran la
+          Constitución (art. 25 y 53), el Código Sustantivo del Trabajo y los
+          convenios de la OIT.
+        </p>
+        <p>
+          Efecto para el trabajador: ingresos y protección inexistentes (quedó
+          seis meses sin salud ni pensión), acumulación de un pasivo laboral de
+          casi $23 millones y condiciones que atentan contra el trabajo digno.
+          La solución es la exigibilidad: reclamo laboral, conciliación, acción
+          de tutela ante su empleador y denuncia ante el Ministerio del Trabajo,
+          más la inspección laboral.
+        </p>
+      </div>
+      <footer class="foot">
+        <div class="foot-sources">
+          <strong>Fuentes:</strong>
+          <span class="foot-source-item"
+            >SENA (2026) <cite>Derechos fundamentales del trabajo</cite></span
+          >
+          <span class="foot-source-item"
+            >Constitución Política (1991), arts. 25 y 53</span
+          >
+          <span class="foot-source-item"
+            >Código Sustantivo del Trabajo (salario, jornada, prestaciones,
+            dotación, seguridad social)</span
+          >
+          <span class="foot-source-item"
+            >Decreto SMLMV 2025 ($1.423.500) y auxilio de transporte
+            ($200.000)</span
+          >
+        </div>
+        <div class="foot-credits">
+          <strong>Elaborado por: Jhon Henry Romero</strong><br />
+          SENA · Análisis y Desarrollo de Software (3186635) · 22 de noviembre
+          de 2026
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
